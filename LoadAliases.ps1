@@ -8,11 +8,7 @@
     Author      : Stacey Adams (stacey.belle.rose@gmail.com)
 #>
 
-if (Test-Path "C:\Program Files\Notepad++") {
-	Set-Alias np "C:\Program Files\Notepad++\notepad++.exe"
-} elseif (Test-Path "C:\Program Files (x86)\Notepad++") {
-	Set-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
-}
-
 Set-Alias reboot Restart-Computer
 Set-Alias shutdown Stop-Computer
+Set-Alias halt Stop-Computer
+Set-Alias vi vim
