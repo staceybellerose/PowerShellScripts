@@ -40,11 +40,24 @@ function Set-KeyHandlers {
 	Set-PSReadlineKeyHandler -Key Ctrl+q -Function DeleteCharOrExit
 }
 
+function Create-TempDrives {
+	$names = [Environment+SpecialFolder]::GetNames([Environment+SpecialFolder])
+	foreach($name in $names)
+	{
+		if($path = [Environment]::GetFolderPath($name)){
+			New-PSDrive -Name $name -PSProvider FileSystem -Root $path
+		}
+	}
+}
+
 function Remove-StartupFunctions {
 	if (Test-Path Function:\Set-KeyHandlers) {
 		Remove-Item -Path Function:\Set-KeyHandlers
 	}
 	if (Test-Path Function:\Retain-CommandHistory) {
 		Remove-Item -Path Function:\Retain-CommandHistory
+	}
+	if (Test-Path Function:\Create-TempDrives) {
+		Remove-Item -Path Function:\Create-TempDrives
 	}
 }

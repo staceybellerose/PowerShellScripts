@@ -27,6 +27,7 @@ Set-Location C:\home\projects
 Reset-Shell
 Set-KeyHandlers
 Retain-CommandHistory
+Create-TempDrives
 Get-VersionInfo
 Get-DiskInfo
 Remove-StartupFunctions
