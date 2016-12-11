@@ -66,17 +66,6 @@ if (-not (Test-Path "$Env:USERPROFILE\psdrives.txt")) {
 	$text | Add-Content "$Env:USERPROFILE\psdrives.txt"
 
 	# set up PSCustomDrives - edit file using favorite installed editor
-	$editor = ""
-	if ("C:\Program Files\Notepad++\notepad++.exe") {
-		$editor = "C:\Program Files\Notepad++\notepad++.exe"
-	} elseif ("C:\Program Files (x86)\Notepad++\notepad++.exe") {
-		$editor = "C:\Program Files (x86)\Notepad++\notepad++.exe"
-	} elseif ("C:\Program Files\Vim\vim80\vim.exe") {
-		$editor = "C:\Program Files\Vim\vim80\vim.exe"
-	} elseif ("C:\Program Files (x86)\Vim\vim80\vim.exe") {
-		$editor = "C:\Program Files (x86)\Vim\vim80\vim.exe"
-	} else {
-		$editor = "notepad"
-	}
+	$editor = Get-Editor
 	Invoke-Expression "& `"$editor`" $Env:USERPROFILE\psdrives.txt"
 }
