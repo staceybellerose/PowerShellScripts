@@ -14,6 +14,5 @@ if (Test-Path "C:\Program Files\Notepad++") {
 	Set-Alias np "C:\Program Files (x86)\Notepad++\notepad++.exe"
 }
 
-Set-Alias gdi Get-DiskInfo
 Set-Alias reboot Restart-Computer
 Set-Alias shutdown Stop-Computer
