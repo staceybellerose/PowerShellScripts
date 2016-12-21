@@ -83,6 +83,8 @@ choco upgrade -y imagemagick
 
 # Media
 
+choco upgrade -y audacity
+choco upgrade -y audacity-lame
 choco upgrade -y vlc
 choco upgrade -y infrarecorder
 choco upgrade -y greenshot
@@ -97,8 +99,6 @@ choco upgrade -y dropbox
 choco upgrade -y googleearth
 
 #The following installers have issues
-#choco upgrade -y audacity
-#choco upgrade -y audacity-lame
 #choco upgrade -y libreoffice-help
 
 refreshenv
