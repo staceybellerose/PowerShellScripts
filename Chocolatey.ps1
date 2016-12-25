@@ -48,6 +48,7 @@ choco upgrade -y visualstudiocode
 choco upgrade -y vscode-powershell
 choco upgrade -y git --installargs "'/D=C:\home\bin\git'"
 choco upgrade -y tortoisegit
+choco upgrade -y keyboard-layout-creator
 #If necessary for client work
 #choco upgrade -y svn
 #choco upgrade -y tortoisesvn
@@ -67,6 +68,7 @@ choco upgrade -y fileformatconverters
 choco upgrade -y filezilla
 choco upgrade -y winscp
 choco upgrade -y curl
+choco upgrade -y uTorrent
 choco upgrade -y wget
 
 # Security
