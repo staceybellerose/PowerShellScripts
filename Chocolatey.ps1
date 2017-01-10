@@ -9,98 +9,112 @@ Invoke-WebRequest https://chocolatey.org/install.ps1 -UseBasicParsing | Invoke-E
 
 PowerShell 4 is needed for some bugfixes, before powershell 5 is installed
 #>
-Write-Host "Please review this script before running it!"
-exit # this script MUST NOT be run without reviewing it!
+param (
+	[Bool] $FirstRun = $FALSE
+)
 
-# PowerShell
-
-if ($PSVersionTable.PSVersion.Major <= 4) {
-	choco upgrade -y powershell4
+if (-not (Test-Admin)) {
+	Write-Warning "You do not have Administrator rights to run this script!`nPlease re-run this script as an Administrator!"
+    exit
 }
-choco upgrade -y powershell
+
+if ($PSVersionTable.PSVersion.Major -lt 5) {
+	Write-Warning "Please update PowerShell to at least version 5.0 before using chocolatey"
+	exit
+}
+
+if (-not $FirstRun) {
+	# Simply upgrade all the choco-installed apps
+	choco upgrade all
+	exit
+}
+
+# Install the following apps via chocolatey
 
 # Frameworks
-choco upgrade -y dotnet4.6.2
+
+choco install dotnet4.6.2
 
 # Utilities
 
-choco upgrade -y 7zip
-choco upgrade -y 7zip.commandline
-choco upgrade -y chocolateygui
-choco upgrade -y eraser
-choco upgrade -y defraggler
-choco upgrade -y --allow-empty-checksums glaryutilities-free
-choco upgrade -y zipinst
+choco install 7zip
+choco install 7zip.commandline
+choco install chocolateygui
+choco install eraser
+choco install defraggler
+choco install --allow-empty-checksums glaryutilities-free
+choco install zipinst
+choco install win32diskimager
 if ([System.Environment]::OSVersion.Version -ge "6.2") {
 	# PC is Windows 8 or above
-	choco upgrade -y classic-shell
+	choco install classic-shell
 }
 
 # Development Tools
 
-choco upgrade -y notepadplusplus.install
-choco upgrade -y vim
-choco upgrade -y sourcetree
-choco upgrade -y diffmerge
-choco upgrade -y kdiff3
-choco upgrade -y winmerge
-choco upgrade -y visualstudiocode
-choco upgrade -y vscode-powershell
-choco upgrade -y git --installargs "'/D=C:\home\bin\git'"
-choco upgrade -y tortoisegit
-choco upgrade -y keyboard-layout-creator
+choco install notepadplusplus.install
+choco install vim
+choco install sourcetree
+choco install diffmerge
+choco install kdiff3
+choco install winmerge
+choco install visualstudiocode
+choco install vscode-powershell
+choco install git --installargs "'/D=C:\home\bin\git'"
+choco install tortoisegit
+choco install keyboard-layout-creator
 #If necessary for client work
-#choco upgrade -y svn
-#choco upgrade -y tortoisesvn
+#choco install svn
+#choco install tortoisesvn
 
 # Documents
 
-choco upgrade -y libreoffice
-choco upgrade -y foxitreader
-choco upgrade -y pdfcreator
-choco upgrade -y word.viewer
-choco upgrade -y excel.viewer
-choco upgrade -y powerpoint.viewer
-choco upgrade -y fileformatconverters
+choco install libreoffice
+choco install foxitreader
+choco install pdfcreator
+choco install word.viewer
+choco install excel.viewer
+choco install powerpoint.viewer
+choco install fileformatconverters
 
 # Network Tools
 
-choco upgrade -y filezilla
-choco upgrade -y winscp
-choco upgrade -y curl
-choco upgrade -y uTorrent
-choco upgrade -y wget
+choco install filezilla
+choco install winscp
+choco install curl
+choco install uTorrent
+choco install wget
 
 # Security
 
-choco upgrade -y keepass
-choco upgrade -y ccleaner
+choco install keepass
+choco install ccleaner
 
 # Images
 
-choco upgrade -y --allow-empty-checksums paint.net
-choco upgrade -y gimp
-choco upgrade -y inkscape
-choco upgrade -y imagemagick
+choco install --allow-empty-checksums paint.net
+choco install gimp
+choco install inkscape
+choco install imagemagick
 
 # Media
 
-choco upgrade -y audacity
-choco upgrade -y audacity-lame
-choco upgrade -y vlc
-choco upgrade -y infrarecorder
-choco upgrade -y greenshot
+choco install audacity
+choco install audacity-lame
+choco install vlc
+choco install infrarecorder
+choco install greenshot
 
 # Cloud
 
-choco upgrade -y googledrive
-choco upgrade -y dropbox
+choco install googledrive
+choco install dropbox
 
 # Other
 
-choco upgrade -y googleearth
+choco install googleearth
 
-#The following installers have issues
-#choco upgrade -y libreoffice-help
+#The following installer has issues
+#choco install libreoffice-help
 
 refreshenv
