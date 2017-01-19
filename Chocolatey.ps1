@@ -76,6 +76,25 @@ choco install word.viewer
 choco install excel.viewer
 choco install powerpoint.viewer
 choco install fileformatconverters
+choco install lyx
+
+# Font Tools
+
+choco install babelmap
+choco install babelpad
+choco install winfontsview
+
+# Fonts
+
+choco install AnonymousPro
+choco install dejavufonts
+choco install DroidFonts
+choco install Inconsolata
+choco install --allow-empty-checksums lato
+choco install Noto
+choco install RobotoFonts
+choco install SourceCodePro
+choco install --allow-empty-checksums ubuntu.font
 
 # Network Tools
 
