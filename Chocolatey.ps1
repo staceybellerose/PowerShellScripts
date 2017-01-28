@@ -45,6 +45,7 @@ choco install defraggler
 choco install --allow-empty-checksums glaryutilities-free
 choco install zipinst
 choco install win32diskimager
+choco install x-lite
 if ([System.Environment]::OSVersion.Version -ge "6.2") {
 	# PC is Windows 8 or above
 	choco install classic-shell
@@ -63,6 +64,7 @@ choco install vscode-powershell
 choco install git --installargs "'/D=C:\home\bin\git'"
 choco install tortoisegit
 choco install keyboard-layout-creator
+choco install markdownpad2
 #If necessary for client work
 #choco install svn
 #choco install tortoisesvn
@@ -96,8 +98,10 @@ choco install RobotoFonts
 choco install SourceCodePro
 choco install --allow-empty-checksums ubuntu.font
 
-# Network Tools
+# Networking
 
+choco install Firefox
+choco install skype
 choco install filezilla
 choco install winscp
 choco install curl
@@ -136,4 +140,4 @@ choco install googleearth
 #The following installer has issues
 #choco install libreoffice-help
 
-refreshenv
+Update-SessionEnvironment

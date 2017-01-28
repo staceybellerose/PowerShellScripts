@@ -11,24 +11,16 @@ function Find-Adb {
 	if (Get-Command "adb.exe" -ErrorAction SilentlyContinue) {
 		return "adb.exe"
 	}
-	if (Test-Path $Env:ANDROID_HOME + "\adb.exe") {
-		return $Env:ANDROID_HOME + "\adb.exe"
-	}
-	$defaultAdbPathInStudio = $Env:LOCALAPPDATA + "\Android\sdk\platform-tools\adb.exe"
-	if (Test-Path $defaultAdbPathInStudio) {
-		return $defaultAdbPathInStudio
-	}
-	$defaultSdkPath = $Env:PROGRAMFILES + "\Android\android-sdk\platform-tools\adb.exe"
-	if (Test-Path $defaultSdkPath) {
-		return $defaultSdkPath
-	}
-	$myStandardInstallPath = "C:\home\bin\android-sdk\platform-tools\adb.exe"
-	if (Test-Path $myStandardInstallPath) {
-		return $myStandardInstallPath
-	}
-	$myAlternateInstallPath = "C:\home\bin\android-sdk-windows\platform-tools\adb.exe"
-	if (Test-Path $myAlternateInstallPath) {
-		return $myAlternateInstallPath
+	@(
+		$Env:ANDROID_HOME + "\adb.exe",
+		$Env:LOCALAPPDATA + "\Android\sdk\platform-tools\adb.exe",
+		$Env:PROGRAMFILES + "\Android\android-sdk\platform-tools\adb.exe",
+		"C:\home\bin\android-sdk\platform-tools\adb.exe",
+		"C:\home\bin\android-sdk-windows\platform-tools\adb.exe"
+	) | ForEach-Object {
+		if (Test-Path -Path $_) {
+			return $_
+		}
 	}
 	return ""
 }

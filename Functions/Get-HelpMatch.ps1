@@ -7,14 +7,14 @@ function Get-HelpMatch {
 #>
     param($searchWord = $(throw "Please specify content to search for"))
 
-    $helpNames = $(get-help *)
+    $helpNames = $(Get-Help *)
 
     foreach($helpTopic in $helpNames)
     {
-       $content = get-help -Full $helpTopic.Name | out-string
+       $content = Get-Help -Full $helpTopic.Name | Out-String
        if($content -match $searchWord)
        { 
-          $helpTopic | select Name,Synopsis
+          $helpTopic | Select-Object Name,Synopsis
        }
     }
 }

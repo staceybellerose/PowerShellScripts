@@ -1,4 +1,4 @@
-function Retain-CommandHistory {
+function Save-CommandHistory {
 <#
 .Synopsis
     Save the current session's command history allowing it to be used in a future session.

@@ -1,4 +1,4 @@
-function Start-AndroidApp([String] $Location = ".") {
+function Invoke-AndroidApp([String] $Location = ".") {
 <#
 .Synopsis
     Start the Android app in the provided folder.

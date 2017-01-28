@@ -1,6 +1,6 @@
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
-function shorten-path([string] $path) { 
+function Limit-Path([string] $path) { 
    $loc = $path.Replace($HOME, '~') 
    # remove prefix for UNC paths 
    $loc = $loc -replace '^[^:]+::', '' 
@@ -11,6 +11,10 @@ function shorten-path([string] $path) {
 
 # Set up a simple prompt, adding the git prompt parts inside git repos
 function global:prompt {
+	# using Write-Host in prompts is expected, so don't show code analysis error for it
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+	param()
+	$origLastExitCode = $LASTEXITCODE
 	$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
 	$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
 	$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
@@ -19,19 +23,14 @@ function global:prompt {
 	} else {
 		$Host.UI.RawUI.WindowTitle = "Windows PowerShell @ " + $(Get-Location)
 	}
-	$cdelim = [ConsoleColor]::DarkCyan
-	$chost = [ConsoleColor]::Green
-	$cloc = [ConsoleColor]::Cyan
+	$cyan = [ConsoleColor]::Cyan
 
-	write-host "$([char]0x0A7) " -n -f $cloc
-	#write-host '{' -n -f $cdelim
-	#write-host (split-path (pwd) -Leaf) -n -f $cloc
-	write-host (shorten-path (pwd).Path) -n -f $cloc 
-	#write-host '}' -n -f $cdelim
+	Write-Host "$([char]0x0A7) " -Foreground $cyan -NoNewLine
+	Write-Host (Limit-Path (Get-Location).Path) -Foreground $cyan -NoNewLine
 
 	Write-VcsStatus
 
-	$global:LASTEXITCODE = $realLASTEXITCODE
+	$LASTEXITCODE = $origLastExitCode
 	return "> "
 }
 

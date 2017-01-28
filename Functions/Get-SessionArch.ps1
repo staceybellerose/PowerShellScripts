@@ -1,4 +1,4 @@
-function Check-SessionArch {
+function Get-SessionArch {
 <#
 .Synopsis
     Returns the current architecture flag.

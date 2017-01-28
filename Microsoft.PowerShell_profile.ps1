@@ -11,11 +11,11 @@
 # Load functions in the Functions folder
 $here = Split-Path $PROFILE
 $functions = Join-Path $here "Functions"
-Get-ChildItem $functions | %{ . $_.FullName }
+Get-ChildItem $functions | ForEach-Object { . $_.FullName }
 
 # Load local modules in the current folder
 $modules = Join-Path $here "*.psm1"
-Get-ChildItem $modules | %{ Import-Module $_.FullName }
+Get-ChildItem $modules | ForEach-Object { Import-Module $_.FullName }
 
 . $PSScriptRoot\LoadAliases.ps1
 . $PSScriptRoot\LoadModules.ps1
@@ -23,8 +23,15 @@ Get-ChildItem $modules | %{ Import-Module $_.FullName }
 
 Set-Location C:\home\projects
 
-Reset-Shell
-Set-KeyHandlers
-Retain-CommandHistory
+Set-PSReadlineKeyHandler -Chord UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Chord DownArrow -Function HistorySearchForward
+Set-PSReadlineKeyHandler -Chord Ctrl+q -Function DeleteCharOrExit
+
+Initialize-Shell
+Save-CommandHistory
 Get-VersionInfo
 Get-DiskInfo
+
+if (Test-Admin) {
+	Update-Help -Module * -ErrorAction SilentlyContinue
+}

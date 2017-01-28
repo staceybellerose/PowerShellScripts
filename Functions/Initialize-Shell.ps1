@@ -1,9 +1,9 @@
-function Reset-Shell {
+function Initialize-Shell {
 <#
 .Synopsis
-	Reset the console window's buffer and size.
+	Initialize the console window's buffer and size.
 .Description
-	Reset the console window's buffer and size to something appropriate.
+	Initialize the console window's buffer and size to something appropriate.
 #>
 	$Shell=$Host.UI.RawUI
 	$size=$Shell.BufferSize

@@ -55,6 +55,23 @@ if (-not (Get-Module -ListAvailable -Name PsUrl)) {
 }
 Import-Module PsUrl
 
+# Set up Nuget
+if (-not ((Get-PackageProvider -ListAvailable).Name -Contains "Nuget")) {
+	Install-PackageProvider Nuget -Force
+	Import-PackageProvider Nuget -Force
+}
+Set-PsRepository -Name PSGallery -InstallationPolicy Trusted
+
+if (-not (Get-Module -ListAvailable -Name PowerShellGet)) {
+	Install-Module PowerShellGet
+}
+Import-Module PowerShellGet
+
+if (-not (Get-Module -ListAvailable -Name PSScriptAnalyzer)) {
+	Install-Module PSScriptAnalyzer
+}
+Import-Module PSScriptAnalyzer
+
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
@@ -66,6 +83,5 @@ if (-not (Test-Path "$Env:USERPROFILE\psdrives.txt")) {
 	$text | Add-Content "$Env:USERPROFILE\psdrives.txt"
 
 	# set up PSCustomDrives - edit file using favorite installed editor
-	$editor = Get-Editor
-	Invoke-Expression "& `"$editor`" $Env:USERPROFILE\psdrives.txt"
+	& (Get-Editor) $Env:USERPROFILE\psdrives.txt
 }

@@ -1,4 +1,4 @@
-function Write-Calendar {
+function Get-Calendar {
   <#
     .SYNOPSIS
     Displays a calendar.
@@ -32,19 +32,19 @@ function Write-Calendar {
   Write-Host "Su Mo Tu We Th Fr Sa"
   Write-Host ("{0,$first_padding}" -f "") -NoNewLine
   
-  1..$days | %{ 
+  1..$days | ForEach-Object { 
     $current = Get-Date -Year $today.Year -Month $today.Month -Day $_
     
     $date = @{$true=" $_ ";$false="$_ "}[$_ -lt 10]
     $foreground = @{$true="Green";$false=$HOST.UI.RawUI.ForegroundColor}[$_ -eq $today.Day]
     
-    Write-Host $date -ForegroundColor $foreground -NoNewLine 
+    Write-Host $date -ForegroundColor $foreground -NoNewLine
     
     if($current.DayOfWeek -eq "Saturday") { 
-      Write-Host "" 
+      Write-Host ""
     }
   }
-  
+
   Write-Host ""
   Write-Host ""
 }

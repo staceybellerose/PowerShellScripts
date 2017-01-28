@@ -13,6 +13,7 @@ with the the number at the top of the column for that character.
 Format-Hex c:\temp\example.bmp
 #>
 [CmdletBinding(DefaultParameterSetName = "ByPath")]
+[OutputType('System.String')]
 param(
   ## The file to read the content from
   [Parameter(ParameterSetName = "ByPath", Position = 0)]

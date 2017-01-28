@@ -6,5 +6,5 @@ function Get-VersionInfo {
 	Gets PowerShell version information and displays it.
 #>
 	$Version = "" + $PSVersionTable.PSVersion.Major + "." + $PSVersionTable.PSVersion.Minor
-	Write-Host "Windows PowerShell, Version $Version"
+	Write-Output "Windows PowerShell, Version $Version"
 }

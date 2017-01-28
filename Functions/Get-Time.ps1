@@ -5,5 +5,5 @@ function Get-Time {
 .Description
     Gets the current time as a string, using the Get-Date cmdlet.
 #>
-	return $(Get-Date | ForEach {$_.ToLongTimeString()})
+	return $(Get-Date | ForEach-Object {$_.ToLongTimeString()})
 }

@@ -1,6 +1,10 @@
 PowerShellScripts
 =================
 
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/staceybellerose/PowerShellScripts/master/LICENSE)
+[![PowerShell](https://img.shields.io/badge/language-PowerShell-green.svg)](https://microsoft.com/powershell)
+[![MS-Windows platform](https://img.shields.io/badge/platform-Windows-yellow.svg)](http://microsoft.com)
+
 My PowerShell scripts, to allow easy syncing between development machines
 
 These scripts should be copied to

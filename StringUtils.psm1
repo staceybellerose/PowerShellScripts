@@ -2,8 +2,8 @@
 ## Handy string utilities.
 ##
 
-function cut([int[]] $indices, [string[]] $names, [bool] $keepLast=$true, [bool] $trim=$true)
-{
+# cuts text lines into fields
+function cut([int[]] $indices, [string[]] $names, [bool] $keepLast=$true, [bool] $trim=$true) {
 <#
 .Synopsis
 	Slices text lines into fields.
@@ -32,7 +32,7 @@ function cut([int[]] $indices, [string[]] $names, [bool] $keepLast=$true, [bool]
 		{
 			if($length -gt 1) { $length-- }
 		}
-		if($names -eq $null -or $names.length -ne $length)
+		if($null -eq $names -or $names.length -ne $length)
 		{
 			throw "The number of names must be equal in number to the fields ($length)."
 		}
@@ -40,7 +40,7 @@ function cut([int[]] $indices, [string[]] $names, [bool] $keepLast=$true, [bool]
 
 	process
 	{
-		if($indices -eq $null -or $indices.length -eq 0)
+		if($null -eq $indices -or $indices.length -eq 0)
 		{
 			if($trim)
 			{
@@ -99,14 +99,18 @@ function cut([int[]] $indices, [string[]] $names, [bool] $keepLast=$true, [bool]
 	}
 }
 
-function join([string]$sep, [string[]]$items)
-{
+# joins a number of items with a separator
+function join([string] $sep, [string[]] $items) {
 <#
 .Synopsis
 	Joins a number of items with a separator.
 .Description
-	Joins a number of items with a separator.  This is needed because PoSH's
-	.NET argument binding will fail will empty or single-item lists
+	Joins a number of items with a separator.  This is needed because .NET
+	argument binding in PoSH will fail will empty or single-item lists
+.Parameter sep
+	String to use as an item separator
+.Parameter items
+	A list of items to join together
 .Example
 	join ':' (1,2,3)
 	Description
@@ -123,17 +127,20 @@ function join([string]$sep, [string[]]$items)
 	-----------
 	Returns "1:2"
 #>
-	if ($items -eq $null) { return '' }
+	if ($null -eq $items) { return '' }
 	return [string]::Join($sep, $items)
 }
 
 # truncates a string at a given length. if the string is longer than the given length,
 # an ellipsis will be added to the end
-function truncateStringAt([string]$str, [int]$length)
-{
+function truncateStringAt([string] $str, [int] $length) {
 <#
 .Synopsis
 	Truncates a string at a given length, with ellipsis added for longer strings.
+.Parameter str
+	The string to truncate
+.Parameter length
+	The lenght of the final truncated string
 .Example
 	truncateStringAt "Really Long String" 10 
 	Description
