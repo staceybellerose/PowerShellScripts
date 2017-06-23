@@ -17,6 +17,12 @@ Get-ChildItem $functions | ForEach-Object { . $_.FullName }
 $modules = Join-Path $here "*.psm1"
 Get-ChildItem $modules | ForEach-Object { Import-Module $_.FullName }
 
+# Load private functions
+$private = Join-Path $here "Private.ps1"
+if (Test-Path $private) {
+	Get-ChildItem $private | ForEach-Object { . $_.FullName }
+}
+
 . $PSScriptRoot\LoadAliases.ps1
 . $PSScriptRoot\LoadModules.ps1
 . $PSScriptRoot\PoshGitProfile.ps1
