@@ -61,10 +61,14 @@ choco install kdiff3
 choco install winmerge
 choco install visualstudiocode
 choco install vscode-powershell
-choco install git --installargs "'/D=C:\home\bin\git'"
+# choco upgrade all doesn't allow for installargs
+#choco install git --installargs "'/D=C:\home\bin\git'"
+choco install git
 choco install tortoisegit
 choco install keyboard-layout-creator
 choco install markdownpad2
+choco install sqlitebrowser
+choco install deepgit
 #If necessary for client work
 #choco install svn
 #choco install tortoisesvn
@@ -78,7 +82,10 @@ choco install word.viewer
 choco install excel.viewer
 choco install powerpoint.viewer
 choco install fileformatconverters
+choco install miktex
 choco install lyx
+choco install scribus
+choco install projectlibre
 
 # Font Tools
 
@@ -112,6 +119,7 @@ choco install wget
 
 choco install keepass
 choco install ccleaner
+choco install MicrosoftSecurityEssentials
 
 # Images
 
@@ -135,6 +143,7 @@ choco install dropbox
 
 # Other
 
+choco install gramps
 choco install googleearth
 
 #The following installer has issues
