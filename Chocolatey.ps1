@@ -42,10 +42,10 @@ choco install 7zip.commandline
 choco install chocolateygui
 choco install eraser
 choco install defraggler
-choco install --allow-empty-checksums glaryutilities-free
 choco install zipinst
 choco install win32diskimager
 choco install x-lite
+choco install virtuawin
 if ([System.Environment]::OSVersion.Version -ge "6.2") {
 	# PC is Windows 8 or above
 	choco install classic-shell
@@ -69,6 +69,11 @@ choco install keyboard-layout-creator
 choco install markdownpad2
 choco install sqlitebrowser
 choco install deepgit
+choco install nodejs
+choco install ruby
+# install some ruby gems
+Update-SessionEnvironment
+gem install travis
 #If necessary for client work
 #choco install svn
 #choco install tortoisesvn
@@ -100,7 +105,6 @@ choco install dejavufonts
 choco install DroidFonts
 choco install Inconsolata
 choco install --allow-empty-checksums lato
-choco install Noto
 choco install RobotoFonts
 choco install SourceCodePro
 choco install --allow-empty-checksums ubuntu.font
@@ -111,7 +115,6 @@ choco install Firefox
 choco install skype
 choco install filezilla
 choco install winscp
-choco install curl
 choco install uTorrent
 choco install wget
 
