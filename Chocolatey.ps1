@@ -70,10 +70,6 @@ choco install markdownpad2
 choco install sqlitebrowser
 choco install deepgit
 choco install nodejs
-choco install ruby
-# install some ruby gems
-Update-SessionEnvironment
-gem install travis
 #If necessary for client work
 #choco install svn
 #choco install tortoisesvn
@@ -117,6 +113,8 @@ choco install filezilla
 choco install winscp
 choco install uTorrent
 choco install wget
+choco install teraterm
+choco install terminals
 
 # Security
 
