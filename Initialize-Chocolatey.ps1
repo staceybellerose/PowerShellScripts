@@ -34,11 +34,13 @@ if (-not $FirstRun) {
 # Frameworks
 
 choco install dotnet4.6.2
+choco install dotnet4.7.1
 
 # Utilities
 
 choco install 7zip
 choco install 7zip.commandline
+choco install 7zip.portable
 choco install chocolateygui
 choco install eraser
 choco install defraggler
@@ -46,37 +48,64 @@ choco install zipinst
 choco install win32diskimager
 choco install x-lite
 choco install virtuawin
+choco install windirstat
+choco install poweriso
+choco install totalcommander
+choco install gow
+choco install f.lux
+
 if ([System.Environment]::OSVersion.Version -ge "6.2") {
 	# PC is Windows 8 or above
 	choco install classic-shell
 }
 
-# Development Tools
+# Development Tools - Editors/IDEs
 
 choco install notepadplusplus.install
+choco install markdownpad2
 choco install vim
-choco install sourcetree
+choco install vscode
+choco install vscode-powershell
+choco install vscode-icons
+
+# Development Tools - Other IDE's and Editors
+
+#choco install brackets
+#choco install atom
+#choco install lighttable
+
+# Development Tools - Source Control
+
 choco install diffmerge
 choco install kdiff3
 choco install winmerge
-choco install visualstudiocode
-choco install vscode-powershell
-# choco upgrade all doesn't allow for installargs
-#choco install git --installargs "'/D=C:\home\bin\git'"
 choco install git
 choco install tortoisegit
-choco install keyboard-layout-creator
-choco install markdownpad2
-choco install sqlitebrowser
+choco install sourcetree
 choco install deepgit
-choco install nodejs
+
 #If necessary for client work
 #choco install svn
 #choco install tortoisesvn
 
+# Development Tools - Miscellaneous
+
+choco install keyboard-layout-creator
+choco install nodejs
+choco install autohotkey.portable
+choco install autoit.commandline
+choco install cmder
+
+# Database Management
+
+#choco install sqliteadmin
+choco install sqlite-studio.portable
+choco install sqlitebrowser
+choco install mongodb
+
 # Documents
 
-choco install libreoffice
+choco install libreoffice-fresh
 choco install foxitreader
 choco install pdfcreator
 choco install word.viewer
@@ -87,6 +116,8 @@ choco install miktex
 choco install lyx
 choco install scribus
 choco install projectlibre
+choco install adobedigitaleditions
+choco install krita
 
 # Font Tools
 
@@ -100,10 +131,10 @@ choco install AnonymousPro
 choco install dejavufonts
 choco install DroidFonts
 choco install Inconsolata
-choco install --allow-empty-checksums lato
-choco install RobotoFonts
 choco install SourceCodePro
+choco install OSFontPack
 choco install --allow-empty-checksums ubuntu.font
+#Note: OSFontPack installs Hack, Lato, RobotoFonts, and SourceSansPro
 
 # Networking
 
@@ -115,12 +146,15 @@ choco install uTorrent
 choco install wget
 choco install teraterm
 choco install terminals
+choco install openssh
+choco install wireshark
 
 # Security
 
 choco install keepass
 choco install ccleaner
 choco install MicrosoftSecurityEssentials
+choco install ccenhancer
 
 # Images
 
@@ -133,9 +167,11 @@ choco install imagemagick
 
 choco install audacity
 choco install audacity-lame
+choco install ffmpeg
 choco install vlc
 choco install infrarecorder
 choco install greenshot
+choco install youtube-dl
 
 # Cloud
 
