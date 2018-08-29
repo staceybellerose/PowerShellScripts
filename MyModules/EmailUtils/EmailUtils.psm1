@@ -113,7 +113,4 @@ function Save-EmailCredentials([Parameter(Mandatory)][String] $filePath) {
 	$MyCredential.Password | ConvertFrom-SecureString | Out-File $filePath -Append
 }
 
-Export-ModuleMember Send-Email
-Export-ModuleMember Set-MailMessage
-Export-ModuleMember Read-EmailCredentials
-Export-ModuleMember Save-EmailCredentials
+Export-ModuleMember -Function @("Send-Email", "Set-MailMessage", "Read-EmailCredentials", "Save-EmailCredentials")

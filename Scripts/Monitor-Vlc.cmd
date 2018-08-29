@@ -1,0 +1,1 @@
+start /min powershell -WindowStyle Hidden -NoProfile -NonInteractive -Command .\Monitor-Vlc.ps1

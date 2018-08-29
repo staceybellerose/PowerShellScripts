@@ -164,6 +164,4 @@ function truncateStringAt([string] $str, [int] $length) {
 	return $str
 }
 
-Export-ModuleMember cut
-Export-ModuleMember join
-Export-ModuleMember truncateStringAt
+Export-ModuleMember -Function @("cut", "join", "truncateStringAt")
