@@ -53,6 +53,7 @@ choco install poweriso
 choco install totalcommander
 choco install gow
 choco install f.lux
+choco install caffeine
 
 if ([System.Environment]::OSVersion.Version -ge "6.2") {
 	# PC is Windows 8 or above
