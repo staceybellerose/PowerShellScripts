@@ -81,6 +81,7 @@ choco install diffmerge
 choco install kdiff3
 choco install winmerge
 choco install git
+choco install git-lfs
 choco install tortoisegit
 choco install sourcetree
 choco install deepgit
