@@ -1,5 +1,4 @@
-PowerShellScripts
-=================
+# PowerShellScripts
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/staceybellerose/PowerShellScripts/master/LICENSE)
 [![PowerShell](https://img.shields.io/badge/language-PowerShell-green.svg)](https://microsoft.com/powershell)
@@ -11,8 +10,11 @@ These scripts should be copied to
 *%USERPROFILE%\Documents\WindowsPowerShell*
 to install.
 
-License
-=======
+## Code of Conduct
+
+Help us keep _PowerShellScripts_ open and inclusive. Please read and follow our [Code of Conduct](https://github.com/staceybellerose/PowerShellScripts/blob/master/CODE_OF_CONDUCT.md).
+
+## License
 
 Copyright 2016-2018 Stacey Adams
 
