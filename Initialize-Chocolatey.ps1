@@ -33,159 +33,183 @@ if (-not $FirstRun) {
 
 # Frameworks
 
-choco install dotnet4.6.2
 choco install dotnet4.7.1
 
 # Utilities
 
 choco install 7zip
-choco install 7zip.commandline
-choco install 7zip.portable
+choco install caffeine
 choco install chocolateygui
 choco install eraser
+choco install etcher
 choco install defraggler
-choco install zipinst
-choco install win32diskimager
-choco install x-lite
-choco install virtuawin
+choco install f.lux
+choco install free42
+choco install less
+choco install powertoys
+choco install ssinternals
 choco install windirstat
+choco install zipinst
+
 choco install poweriso
 choco install totalcommander
-choco install gow
-choco install f.lux
-choco install caffeine
 
-if ([System.Environment]::OSVersion.Version -ge "6.2") {
-	# PC is Windows 8 or above
-	choco install classic-shell
-}
+# Development Tools - Languages, Compilers, etc.
+
+choco install cmake
+choco install golang
+choco install gradle
+choco install jq
+choco install maven
+choco install nvm # this will manage node/npm installs
+choco install python3
+choco install pip
+choco install ruby
 
 # Development Tools - Editors/IDEs
 
-choco install notepadplusplus.install
+choco install anaconda3
+# choco install AndroidStudio
+choco install intellijidea-community
 choco install markdownpad2
+choco install notepadplusplus
+choco install Pycharm-community
 choco install vim
 choco install vscode
 choco install vscode-powershell
 choco install vscode-icons
 
-# Development Tools - Other IDE's and Editors
+# Development Tools - Statistical Processing
 
-#choco install brackets
-#choco install atom
-#choco install lighttable
+#choco install R.Project
+#choco install R.Studio
 
 # Development Tools - Source Control
 
-choco install diffmerge
-choco install kdiff3
-choco install winmerge
-choco install git
-choco install git-lfs
-choco install tortoisegit
-choco install sourcetree
 choco install deepgit
+choco install diffutils
+choco install gh
+choco install git
+choco install git-fork
+choco install git-lfs
+choco install meld
+choco install tortoisegit
+choco install winmerge
 
 #If necessary for client work
 #choco install svn
 #choco install tortoisesvn
 
-# Development Tools - Miscellaneous
+# Development Tools - Cloud Deployment
 
-choco install keyboard-layout-creator
-choco install nodejs
-choco install autohotkey.portable
-choco install autoit.commandline
-choco install cmder
+choco install docker-cli
+choco install docker-compose
+choco install docker-desktop
+choco install postman
 
-# Database Management
+# Development Tools - Database Management
 
-#choco install sqliteadmin
+choco install dbeaver
+choco install mongodb
+choco install mongodb-compass
+choco install mysql
+choco install mysql.workbench
+choco install pgadmin4
+choco install postgresql
+choco install SQLite
 choco install sqlite-studio.portable
 choco install sqlitebrowser
-choco install mongodb
+
+# Development Tools - Command Line Terminals
+
+choco install cmder
+choco install hyper
 
 # Documents
 
-choco install libreoffice-fresh
 choco install foxitreader
-choco install pdfcreator
-choco install word.viewer
-choco install excel.viewer
-choco install powerpoint.viewer
-choco install fileformatconverters
-choco install miktex
-choco install lyx
-choco install scribus
-choco install projectlibre
-choco install adobedigitaleditions
 choco install krita
+choco install libreoffice-fresh
+choco install lyx
+choco install miktex
+choco install pdfcreator
+choco install projectlibre
+choco install scribus
 
 # Font Tools
 
+choco install ampfontviewer
 choco install babelmap
 choco install babelpad
-choco install winfontsview
 
 # Fonts
 
-choco install AnonymousPro
+choco install anonymouspro
+choco install bitstreamverafonts
+choco install cascadiacode
+choco install cascadiacodeitalic
+choco install cascadiamono
+choco install cascadiamonoitalic
+choco install croscorefonts-font
+choco install croscorefonts-caladea-font
 choco install dejavufonts
 choco install DroidFonts
-choco install Inconsolata
+choco install fantasque-sans.font
+choco install hackfont
+choco install inconsolata
+choco install lato
+choco install liberationfonts
+choco install opensans
+choco install oxygenmono
+choco install roboto.font
 choco install SourceCodePro
-choco install OSFontPack
 choco install --allow-empty-checksums ubuntu.font
-#Note: OSFontPack installs Hack, Lato, RobotoFonts, and SourceSansPro
 
-# Networking
+# Networking/Internet
 
-choco install Firefox
-choco install skype
+choco install curl
 choco install filezilla
+choco install Firefox
+choco install putty
+choco install Wget
 choco install winscp
-choco install uTorrent
-choco install wget
-choco install teraterm
-choco install terminals
-choco install openssh
-choco install wireshark
+choco install yarn
 
 # Security
 
-choco install keepass
 choco install ccleaner
-choco install MicrosoftSecurityEssentials
 choco install ccenhancer
+choco install keepass
+choco install keepassxc
 
-# Images
+# Graphics
 
-choco install --allow-empty-checksums paint.net
+choco install ghostwriter
 choco install gimp
 choco install inkscape
 choco install imagemagick
+choco install --allow-empty-checksums paint.net
 
-# Media
+# Multimedia
 
 choco install audacity
+choco install audacity-ffmpeg
 choco install audacity-lame
 choco install ffmpeg
+choco install spotify
 choco install vlc
-choco install infrarecorder
-choco install greenshot
 choco install youtube-dl
 
 # Cloud
 
-choco install googledrive
+choco install box-drive
 choco install dropbox
+choco install googledrive
+choco install megasync
+choco install rclone
 
 # Other
 
 choco install gramps
-choco install googleearth
-
-#The following installer has issues
-#choco install libreoffice-help
 
 Update-SessionEnvironment
