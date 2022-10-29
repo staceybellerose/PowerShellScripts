@@ -15,11 +15,11 @@ function Initialize-Shell {
 	$size.height=50
 	$Shell.WindowSize=$size
 	$Shell.CursorSize=25
-	
+
 	# Check to see if we are currently running "as Administrator"
 	if (Test-Admin) {
 		$Shell.BackgroundColor = "DarkRed"
 	}
-	
+
 	Clear-Host
 }

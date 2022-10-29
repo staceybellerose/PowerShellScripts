@@ -8,11 +8,11 @@ function cut([int[]] $indices, [string[]] $names, [bool] $keepLast=$true, [bool]
 .Synopsis
 	Slices text lines into fields.
 .Description
-	Given the indices for how to break up a string, cut will output a list of 
-	objects with fields matching the specified names. Each field runs until the 
+	Given the indices for how to break up a string, cut will output a list of
+	objects with fields matching the specified names. Each field runs until the
 	next field, or in the case of the final field, the end of the input line.
 .Parameter indices
-	Takes a list of indices at which each field will start. 
+	Takes a list of indices at which each field will start.
 .Parameter names
 	A list of names for each output field
 .Parameter keepLast
@@ -142,7 +142,7 @@ function truncateStringAt([string] $str, [int] $length) {
 .Parameter length
 	The lenght of the final truncated string
 .Example
-	truncateStringAt "Really Long String" 10 
+	truncateStringAt "Really Long String" 10
 	Description
 	-----------
 	Returns "Really ..."

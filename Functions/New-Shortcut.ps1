@@ -1,8 +1,8 @@
 Function New-Shortcut {
-<#  
-.SYNOPSIS  
-    This script is used to create a shortcut.        
-.DESCRIPTION  
+<#
+.SYNOPSIS
+    This script is used to create a shortcut.
+.DESCRIPTION
     This script uses a Com Object to create a shortcut.
 .PARAMETER Path
     The path to the shortcut file.  ".lnk" will be appended as an extension if not specified.  If the folder name doesn't exist, it will be created.
@@ -13,77 +13,77 @@ Function New-Shortcut {
 .PARAMETER Description
     Description of the shortcut.
 .PARAMETER HotKey
-    Hotkey combination for the shortcut.  Valid values are SHIFT+F7, ALT+CTRL+9, etc.  An invalid entry will cause the 
+    Hotkey combination for the shortcut.  Valid values are SHIFT+F7, ALT+CTRL+9, etc.  An invalid entry will cause the
     function to fail.
 .PARAMETER WorkDir
-    Working directory of the application.  An invalid directory can be specified, but invoking the application from the 
+    Working directory of the application.  An invalid directory can be specified, but invoking the application from the
     shortcut could fail.
 .PARAMETER WindowStyle
     Windows style of the application, Normal (1), Maximized (3), or Minimized (7).  Invalid entries will result in Normal
     behavior.
 .PARAMETER Icon
-    Full path of the icon file.  Executables, DLLs, etc with multiple icons need the number of the icon to be specified, 
+    Full path of the icon file.  Executables, DLLs, etc with multiple icons need the number of the icon to be specified,
     otherwise the first icon will be used, i.e.:  c:\windows\system32\shell32.dll,99
 .PARAMETER admin
     Used to create a shortcut that prompts for admin credentials when invoked, equivalent to specifying runas.
-.NOTES  
+.NOTES
     Author		: Rhys Edwards
-    Email		: powershell@nolimit.to  
+    Email		: powershell@nolimit.to
 .INPUTS
     Strings and Integer
 .OUTPUTS
     True or False, and a shortcut
-.EXAMPLE  
-    New-Shortcut -Path c:\temp\notepad.lnk -TargetPath c:\windows\notepad.exe    
+.EXAMPLE
+    New-Shortcut -Path c:\temp\notepad.lnk -TargetPath c:\windows\notepad.exe
     Creates a simple shortcut to Notepad at c:\temp\notepad.lnk
 .EXAMPLE
     New-Shortcut "$($env:Public)\Desktop\Notepad" c:\windows\notepad.exe -WindowStyle 3 -admin
-    Creates a shortcut named Notepad.lnk on the Public desktop to notepad.exe that launches maximized after prompting for 
+    Creates a shortcut named Notepad.lnk on the Public desktop to notepad.exe that launches maximized after prompting for
     admin credentials.
 .EXAMPLE
     New-Shortcut "$($env:USERPROFILE)\Desktop\Notepad.lnk" c:\windows\notepad.exe -icon "c:\windows\system32\shell32.dll,99"
     Creates a shortcut named Notepad.lnk on the user's desktop to notepad.exe that has a pointy finger icon (on Windows 7).
 .EXAMPLE
     New-Shortcut "$($env:USERPROFILE)\Desktop\Notepad.lnk" c:\windows\notepad.exe C:\instructions.txt
-    Creates a shortcut named Notepad.lnk on the user's desktop to notepad.exe that opens C:\instructions.txt 
+    Creates a shortcut named Notepad.lnk on the user's desktop to notepad.exe that opens C:\instructions.txt
 .EXAMPLE
-    New-Shortcut "$($env:USERPROFILE)\Desktop\ADUC" %SystemRoot%\system32\dsa.msc -admin 
-    Creates a shortcut named ADUC.lnk on the user's desktop to Active Directory Users and Computers that launches after 
+    New-Shortcut "$($env:USERPROFILE)\Desktop\ADUC" %SystemRoot%\system32\dsa.msc -admin
+    Creates a shortcut named ADUC.lnk on the user's desktop to Active Directory Users and Computers that launches after
     prompting for admin credentials
 #>
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory=$True,  ValueFromPipelineByPropertyName=$True,Position=0)] 
-    [Alias("File","Shortcut")] 
+    [Parameter(Mandatory=$True,  ValueFromPipelineByPropertyName=$True,Position=0)]
+    [Alias("File","Shortcut")]
     [string]$Path,
 
-    [Parameter(Mandatory=$True,  ValueFromPipelineByPropertyName=$True,Position=1)] 
-    [Alias("Target")] 
+    [Parameter(Mandatory=$True,  ValueFromPipelineByPropertyName=$True,Position=1)]
+    [Alias("Target")]
     [string]$TargetPath,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True,Position=2)] 
-    [Alias("Args","Argument")] 
+    [Parameter(ValueFromPipelineByPropertyName=$True,Position=2)]
+    [Alias("Args","Argument")]
     [string]$Arguments,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True,Position=3)]  
+    [Parameter(ValueFromPipelineByPropertyName=$True,Position=3)]
     [Alias("Desc")]
     [string]$Description,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True,Position=4)]  
+    [Parameter(ValueFromPipelineByPropertyName=$True,Position=4)]
     [string]$HotKey,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True,Position=5)]  
+    [Parameter(ValueFromPipelineByPropertyName=$True,Position=5)]
     [Alias("WorkingDirectory","WorkingDir")]
     [string]$WorkDir,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True,Position=6)]  
+    [Parameter(ValueFromPipelineByPropertyName=$True,Position=6)]
     [int]$WindowStyle,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True,Position=7)]  
+    [Parameter(ValueFromPipelineByPropertyName=$True,Position=7)]
     [string]$Icon,
 
-    [Parameter(ValueFromPipelineByPropertyName=$True)]  
+    [Parameter(ValueFromPipelineByPropertyName=$True)]
     [switch]$admin
 )
 
@@ -122,7 +122,7 @@ Process {
     # Create Shortcut
     $Shortcut.Save()
     # Set Shortcut to Run Elevated
-    If ($admin) {     
+    If ($admin) {
       $TempFileName = [IO.Path]::GetRandomFileName()
       $TempFile = [IO.FileInfo][IO.Path]::Combine($Path.Directory, $TempFileName)
       $Writer = New-Object System.IO.FileStream $TempFile, ([System.IO.FileMode]::Create)

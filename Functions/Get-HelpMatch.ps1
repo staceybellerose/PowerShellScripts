@@ -11,10 +11,10 @@ function Get-HelpMatch {
 
     foreach($helpTopic in $helpNames)
     {
-       $content = Get-Help -Full $helpTopic.Name | Out-String
-       if($content -match $searchWord)
-       { 
-          $helpTopic | Select-Object Name,Synopsis
-       }
+        $content = Get-Help -Full $helpTopic.Name | Out-String
+        if($content -match $searchWord)
+        {
+            $helpTopic | Select-Object Name,Synopsis
+        }
     }
 }

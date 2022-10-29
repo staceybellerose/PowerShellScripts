@@ -11,12 +11,12 @@ function Get-Editor {
 		return $path.Path
 	}
 	#>
-	
+
 	$path = Join-Path $env:windir "\system32\notepad.exe"
 	if(Test-Path $path) {
 		return $path
 	}
-	
+
 	return $null
 }
 
