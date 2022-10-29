@@ -17,5 +17,5 @@ function Sync-Profile {
 			Write-Verbose "Running $_"
 			. $_
 		}
-	}    
+	}
 }

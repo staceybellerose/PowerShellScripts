@@ -27,11 +27,9 @@ function Send-Email([Parameter(Mandatory)][String] $credentialsFilePath,
 	Whether or not to enable SSL communication with the smtp server.
 #>
 	$smtpCredentials = Read-EmailCredentials $credentialsFilePath
-	
 	$smtpclient = New-Object net.mail.smtpclient($smtpServer, $smtpPort)
 	$smtpclient.EnableSsl = $enableSsl
 	$smtpclient.Credentials = $smtpCredentials.GetNetworkCredential()
-	
 	$smtpclient.send($mailMessage)
 }
 
@@ -77,7 +75,6 @@ function Set-MailMessage(
 	$mail.Subject = $subject
 	$mail.Body = $body
 	$mail.IsBodyHtml = $isBodyHtml
-	
 	return $mail
 }
 

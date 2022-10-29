@@ -4,6 +4,6 @@ function ConvertFrom-Base64 {
 	)
 	$bytes = [System.Convert]::FromBase64String($base64String)
 	$decoded = [System.Text.Encoding]::UTF8.GetString($bytes)
-	
+
 	return $decoded
 }

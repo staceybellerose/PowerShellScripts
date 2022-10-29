@@ -1,12 +1,12 @@
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
-function Limit-Path([string] $path) { 
-   $loc = $path.Replace($HOME, '~') 
-   # remove prefix for UNC paths 
-   $loc = $loc -replace '^[^:]+::', '' 
-   # make path shorter like tabs in Vim, 
-   # handle paths starting with \\ and . correctly 
-   return ($loc -replace '\\(\.?)([^\\])[^\\]*(?=\\)','\$1$2') 
+function Limit-Path([string] $path) {
+  $loc = $path.Replace($HOME, '~')
+  # remove prefix for UNC paths
+  $loc = $loc -replace '^[^:]+::', ''
+  # make path shorter like tabs in Vim,
+  # handle paths starting with \\ and . correctly
+  return ($loc -replace '\\(\.?)([^\\])[^\\]*(?=\\)','\$1$2')
 }
 
 # Set up a simple prompt, adding the git prompt parts inside git repos
